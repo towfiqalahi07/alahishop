@@ -1,0 +1,239 @@
+:root {
+  --bg-deep: #060c1d;
+  --bg-mid: #0e1e58;
+  --text: #f3f5fa;
+  --soft: rgba(255, 255, 255, 0.62);
+  --card-border: rgba(201, 217, 240, 0.72);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Outfit", system-ui, sans-serif;
+  color: var(--text);
+  background: radial-gradient(circle at 52% 72%, #1f58cf 0, #0d1e58 26%, #070e1f 70%);
+}
+
+.hero {
+  position: relative;
+  width: min(1500px, 100%);
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 4rem 4rem 2.2rem;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.4) 0.8px, transparent 0.8px);
+  background-size: 4px 4px;
+  opacity: 0.11;
+  pointer-events: none;
+}
+
+.noise {
+  position: absolute;
+  inset: 0;
+  background-image: repeating-radial-gradient(circle at 13% 12%, transparent 0 80px, rgba(255, 255, 255, 0.045) 81px 81.5px),
+    repeating-radial-gradient(circle at 64% 31%, transparent 0 70px, rgba(255, 255, 255, 0.035) 71px 71.5px);
+  mix-blend-mode: screen;
+  opacity: 0.46;
+  pointer-events: none;
+}
+
+.top {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.logo-mark {
+  width: 300px;
+  opacity: 0.26;
+  margin-left: 1.4rem;
+}
+
+.logo-mark svg {
+  width: 100%;
+  fill: none;
+  stroke: #e8eef7;
+  stroke-opacity: 0.68;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.intro {
+  text-align: right;
+  max-width: 420px;
+  margin-top: 1.3rem;
+}
+
+.intro p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: clamp(1.55rem, 2.1vw, 2.8rem);
+  line-height: 1.24;
+}
+
+.intro h1 {
+  margin: 0;
+  font-size: clamp(1.8rem, 2.4vw, 3.2rem);
+  line-height: 1.22;
+  font-weight: 800;
+}
+
+.cta {
+  margin-top: 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.8rem 1.6rem;
+  border-radius: 999px;
+  text-decoration: none;
+  color: var(--text);
+  background: rgba(17, 20, 27, 0.93);
+  font-size: clamp(1.15rem, 1.8vw, 2rem);
+  font-weight: 500;
+}
+
+.icon {
+  width: 1.25em;
+  height: 1.25em;
+  border-radius: 50%;
+  background: #f7f9fd;
+  color: #12151f;
+  display: inline-grid;
+  place-items: center;
+  font-size: 0.88em;
+  line-height: 1;
+}
+
+.cards {
+  position: relative;
+  z-index: 2;
+  margin-top: 2.5rem;
+  display: flex;
+  gap: 1.8rem;
+  overflow-x: auto;
+  padding: 0 0.6rem 1rem;
+  scrollbar-width: none;
+}
+
+.cards::-webkit-scrollbar {
+  display: none;
+}
+
+.card {
+  position: relative;
+  flex: 0 0 310px;
+  height: 440px;
+  border: 4px solid var(--card-border);
+  border-radius: 34px;
+  padding: 2.6rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: inset 0 0 30px rgba(255, 255, 255, 0.04);
+}
+
+.card h2 {
+  margin: 0;
+  font-size: 5.1rem;
+  line-height: 0.92;
+  letter-spacing: -1px;
+  font-weight: 700;
+}
+
+.arrow {
+  margin-left: auto;
+  border: 4px solid rgba(213, 228, 251, 0.48);
+  color: rgba(238, 245, 255, 0.95);
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: rgba(98, 134, 184, 0.2);
+  font-size: 4rem;
+  line-height: 0;
+  cursor: pointer;
+}
+
+.card-1 {
+  background: radial-gradient(circle at 35% 78%, #4c4c4c 0, #1f1f1f 40%, #090909 100%);
+}
+
+.card-2 {
+  background: linear-gradient(170deg, #4a6174, #2e4355 58%, #4f6273),
+    repeating-radial-gradient(circle at 60% 92%, rgba(255, 255, 255, 0.22) 0 1px, transparent 2px 8px);
+}
+
+.card-3 {
+  background: linear-gradient(145deg, #030304 0, #111522 45%, #05070e 100%);
+}
+
+.card-3::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 30px;
+  background: linear-gradient(120deg, transparent 0 30%, rgba(255, 89, 0, 0.85) 31%, transparent 37%);
+  opacity: 0.72;
+}
+
+.card-4 {
+  background: linear-gradient(165deg, #0d69cf, #01245f 58%, #001126);
+}
+
+.card-4::after,
+.card-5::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 30px;
+  background: repeating-linear-gradient(126deg, rgba(255, 255, 255, 0.24) 0 3px, transparent 3px 16px);
+  opacity: 0.24;
+}
+
+.card-5 {
+  background: linear-gradient(165deg, #fb4a7a 0, #e662a2 45%, #f5af43 100%);
+}
+
+@media (max-width: 980px) {
+  .hero {
+    padding: 2.2rem 1rem 1rem;
+  }
+
+  .top {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .intro {
+    text-align: left;
+    margin-top: 0;
+  }
+
+  .logo-mark {
+    width: 220px;
+    margin-left: 0;
+  }
+
+  .card {
+    flex-basis: 260px;
+    height: 380px;
+  }
+
+  .card h2 {
+    font-size: 4rem;
+  }
+}
