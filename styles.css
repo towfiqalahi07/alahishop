@@ -1,9 +1,6 @@
 :root {
-  --bg-deep: #060c1d;
-  --bg-mid: #0e1e58;
-  --text: #f3f5fa;
-  --soft: rgba(255, 255, 255, 0.62);
-  --card-border: rgba(201, 217, 240, 0.72);
+  --fg: #f8fbff;
+  --border: rgba(225, 238, 255, 0.78);
 }
 
 * {
@@ -14,58 +11,94 @@ body {
   margin: 0;
   min-height: 100vh;
   font-family: "Outfit", system-ui, sans-serif;
-  color: var(--text);
-  background: radial-gradient(circle at 52% 72%, #1f58cf 0, #0d1e58 26%, #070e1f 70%);
+  color: var(--fg);
+  background: radial-gradient(70% 50% at 50% 82%, #215de0 0, #163170 42%, #080f24 85%);
+  overflow-x: hidden;
 }
 
-.hero {
+.page {
   position: relative;
-  width: min(1500px, 100%);
   min-height: 100vh;
+  max-width: 1600px;
   margin: 0 auto;
-  padding: 4rem 4rem 2.2rem;
-  overflow: hidden;
+  padding: 3.2rem 4rem 2.6rem;
+  isolation: isolate;
 }
 
-.hero::before {
-  content: "";
+.texture,
+.dust {
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(rgba(255, 255, 255, 0.4) 0.8px, transparent 0.8px);
-  background-size: 4px 4px;
-  opacity: 0.11;
   pointer-events: none;
 }
 
-.noise {
-  position: absolute;
-  inset: 0;
-  background-image: repeating-radial-gradient(circle at 13% 12%, transparent 0 80px, rgba(255, 255, 255, 0.045) 81px 81.5px),
-    repeating-radial-gradient(circle at 64% 31%, transparent 0 70px, rgba(255, 255, 255, 0.035) 71px 71.5px);
+.texture {
+  z-index: -3;
+  background:
+    radial-gradient(2px 2px at 7% 12%, rgba(255, 255, 255, 0.25), transparent),
+    radial-gradient(2px 2px at 31% 20%, rgba(255, 255, 255, 0.18), transparent),
+    radial-gradient(2px 2px at 60% 80%, rgba(255, 255, 255, 0.16), transparent),
+    radial-gradient(2px 2px at 91% 26%, rgba(255, 255, 255, 0.24), transparent),
+    radial-gradient(1.6px 1.6px at 77% 50%, rgba(255, 255, 255, 0.13), transparent);
+  background-size: 220px 220px;
+  opacity: 0.75;
+}
+
+.dust {
+  z-index: -2;
   mix-blend-mode: screen;
-  opacity: 0.46;
-  pointer-events: none;
+  opacity: 0.42;
 }
 
-.top {
-  position: relative;
-  z-index: 1;
+.dust-a {
+  background: repeating-radial-gradient(circle at 25% 10%, transparent 0 60px, rgba(255, 255, 255, 0.07) 60px 61px);
+  animation: drift 18s linear infinite;
+}
+
+.dust-b {
+  background: repeating-radial-gradient(circle at 75% 70%, transparent 0 56px, rgba(255, 255, 255, 0.05) 56px 57px);
+  animation: drift 24s linear infinite reverse;
+}
+
+@keyframes drift {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-26px);
+  }
+}
+
+.masthead {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  gap: 2rem;
 }
 
-.logo-mark {
-  width: 300px;
-  opacity: 0.26;
-  margin-left: 1.4rem;
+.mark-wrap {
+  width: 350px;
+  opacity: 0.28;
+  margin-left: 0.6rem;
+  animation: breathe 5s ease-in-out infinite;
 }
 
-.logo-mark svg {
+@keyframes breathe {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.24;
+  }
+  50% {
+    transform: scale(1.013);
+    opacity: 0.33;
+  }
+}
+
+.brand-mark {
   width: 100%;
   fill: none;
-  stroke: #e8eef7;
-  stroke-opacity: 0.68;
+  stroke: rgba(240, 248, 255, 0.95);
   stroke-width: 2.2;
   stroke-linecap: round;
   stroke-linejoin: round;
@@ -73,149 +106,179 @@ body {
 
 .intro {
   text-align: right;
-  max-width: 420px;
-  margin-top: 1.3rem;
+  margin-top: 2.1rem;
 }
 
-.intro p {
+.intro p,
+.intro h1 {
   margin: 0;
-  color: rgba(255, 255, 255, 0.88);
-  font-size: clamp(1.55rem, 2.1vw, 2.8rem);
-  line-height: 1.24;
+  font-size: clamp(1.7rem, 2.15vw, 3.1rem);
+  line-height: 1.2;
 }
 
 .intro h1 {
-  margin: 0;
-  font-size: clamp(1.8rem, 2.4vw, 3.2rem);
-  line-height: 1.22;
   font-weight: 800;
 }
 
-.cta {
-  margin-top: 1.5rem;
+.contact {
+  margin-top: 1.45rem;
   display: inline-flex;
   align-items: center;
   gap: 0.7rem;
-  padding: 0.8rem 1.6rem;
-  border-radius: 999px;
   text-decoration: none;
-  color: var(--text);
-  background: rgba(17, 20, 27, 0.93);
-  font-size: clamp(1.15rem, 1.8vw, 2rem);
-  font-weight: 500;
+  color: #fff;
+  background: rgba(17, 20, 31, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  padding: 0.7rem 1.4rem;
+  font-size: clamp(1.2rem, 1.65vw, 2rem);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.22), 0 10px 22px rgba(7, 10, 16, 0.38);
+  backdrop-filter: blur(8px) saturate(130%);
 }
 
-.icon {
-  width: 1.25em;
-  height: 1.25em;
-  border-radius: 50%;
-  background: #f7f9fd;
-  color: #12151f;
-  display: inline-grid;
+.mail {
+  width: 1.28em;
+  height: 1.28em;
+  border-radius: 999px;
+  background: #fff;
+  color: #111827;
+  display: grid;
   place-items: center;
-  font-size: 0.88em;
-  line-height: 1;
+  font-size: 0.86em;
 }
 
-.cards {
-  position: relative;
-  z-index: 2;
-  margin-top: 2.5rem;
+.deck {
+  margin-top: 2rem;
   display: flex;
-  gap: 1.8rem;
+  gap: 1.65rem;
   overflow-x: auto;
-  padding: 0 0.6rem 1rem;
+  padding: 0.4rem 0.35rem 0.8rem;
   scrollbar-width: none;
 }
 
-.cards::-webkit-scrollbar {
+.deck::-webkit-scrollbar {
   display: none;
 }
 
-.card {
+.glass-card {
   position: relative;
-  flex: 0 0 310px;
-  height: 440px;
-  border: 4px solid var(--card-border);
+  flex: 0 0 324px;
+  height: 470px;
+  border: 4px solid var(--border);
   border-radius: 34px;
-  padding: 2.6rem 1.6rem;
+  padding: 2.45rem 1.5rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  box-shadow: inset 0 0 30px rgba(255, 255, 255, 0.04);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.42), inset 0 -10px 20px rgba(0, 0, 0, 0.2), 0 18px 30px rgba(2, 8, 25, 0.38);
+  backdrop-filter: blur(14px) saturate(130%);
+  overflow: hidden;
 }
 
-.card h2 {
+.glass-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(140deg, rgba(255, 255, 255, 0.17), transparent 32%, transparent 68%, rgba(255, 255, 255, 0.08));
+  pointer-events: none;
+}
+
+.glass-card::after {
+  content: "";
+  position: absolute;
+  inset: -80% -40%;
+  background: linear-gradient(115deg, transparent 44%, rgba(255, 255, 255, 0.2) 50%, transparent 56%);
+  transform: translateX(-45%) rotate(8deg);
+  animation: sheen 8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes sheen {
+  0%,
+  100% {
+    transform: translateX(-45%) rotate(8deg);
+    opacity: 0;
+  }
+  28% {
+    opacity: 0;
+  }
+  48% {
+    transform: translateX(44%) rotate(8deg);
+    opacity: 0.46;
+  }
+  62% {
+    opacity: 0;
+  }
+}
+
+.venture h2 {
   margin: 0;
-  font-size: 5.1rem;
-  line-height: 0.92;
+  font-size: 4.82rem;
   letter-spacing: -1px;
+  line-height: 0.9;
   font-weight: 700;
+  text-transform: lowercase;
+  text-shadow: 0 3px 16px rgba(0, 0, 0, 0.3);
 }
 
-.arrow {
+.go {
   margin-left: auto;
-  border: 4px solid rgba(213, 228, 251, 0.48);
-  color: rgba(238, 245, 255, 0.95);
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
+  width: 79px;
+  height: 79px;
+  border: 4px solid rgba(211, 228, 251, 0.6);
+  border-radius: 999px;
+  background: rgba(122, 154, 199, 0.2);
+  color: #edf4ff;
   display: grid;
   place-items: center;
-  background: rgba(98, 134, 184, 0.2);
   font-size: 4rem;
   line-height: 0;
   cursor: pointer;
+  backdrop-filter: blur(8px);
 }
 
-.card-1 {
-  background: radial-gradient(circle at 35% 78%, #4c4c4c 0, #1f1f1f 40%, #090909 100%);
+.v1 {
+  background: radial-gradient(circle at 36% 76%, #555 0, #2c2c2c 34%, #070707 100%);
 }
 
-.card-2 {
-  background: linear-gradient(170deg, #4a6174, #2e4355 58%, #4f6273),
-    repeating-radial-gradient(circle at 60% 92%, rgba(255, 255, 255, 0.22) 0 1px, transparent 2px 8px);
+.v2 {
+  background:
+    linear-gradient(170deg, #5c7385 0, #3f5568 49%, #4c6274 100%),
+    radial-gradient(120% 90% at 50% 100%, rgba(255, 255, 255, 0.28) 0, transparent 58%);
 }
 
-.card-3 {
-  background: linear-gradient(145deg, #030304 0, #111522 45%, #05070e 100%);
+.v3 {
+  background: linear-gradient(145deg, #030406 0, #0f1626 47%, #04060e 100%);
 }
 
-.card-3::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 30px;
-  background: linear-gradient(120deg, transparent 0 30%, rgba(255, 89, 0, 0.85) 31%, transparent 37%);
-  opacity: 0.72;
+.v3::before {
+  background:
+    linear-gradient(140deg, rgba(255, 255, 255, 0.15), transparent 32%, transparent 68%, rgba(255, 255, 255, 0.06)),
+    linear-gradient(118deg, transparent 14%, rgba(255, 95, 12, 0.9) 19%, transparent 24%);
 }
 
-.card-4 {
-  background: linear-gradient(165deg, #0d69cf, #01245f 58%, #001126);
+.v4 {
+  background: linear-gradient(164deg, #0e6fd9 0, #03306e 57%, #000f29 100%);
 }
 
-.card-4::after,
-.card-5::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 30px;
-  background: repeating-linear-gradient(126deg, rgba(255, 255, 255, 0.24) 0 3px, transparent 3px 16px);
-  opacity: 0.24;
+.v4::before,
+.v5::before {
+  background:
+    linear-gradient(140deg, rgba(255, 255, 255, 0.15), transparent 32%, transparent 68%, rgba(255, 255, 255, 0.08)),
+    repeating-linear-gradient(126deg, rgba(255, 255, 255, 0.2) 0 3px, transparent 3px 14px);
 }
 
-.card-5 {
-  background: linear-gradient(165deg, #fb4a7a 0, #e662a2 45%, #f5af43 100%);
+.v5 {
+  background: linear-gradient(165deg, #fc4d7c 0, #e467a7 43%, #f4b34f 100%);
 }
 
 @media (max-width: 980px) {
-  .hero {
-    padding: 2.2rem 1rem 1rem;
+  .page {
+    padding: 2rem 0.9rem 1.2rem;
   }
 
-  .top {
+  .masthead {
     flex-direction: column;
-    gap: 1rem;
   }
 
   .intro {
@@ -223,17 +286,17 @@ body {
     margin-top: 0;
   }
 
-  .logo-mark {
-    width: 220px;
+  .mark-wrap {
+    width: 240px;
     margin-left: 0;
   }
 
-  .card {
-    flex-basis: 260px;
-    height: 380px;
+  .glass-card {
+    flex-basis: 278px;
+    height: 400px;
   }
 
-  .card h2 {
-    font-size: 4rem;
+  .venture h2 {
+    font-size: 4.1rem;
   }
 }
