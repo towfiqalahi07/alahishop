@@ -1,27 +1,34 @@
 :root {
   --fg: #f8fbff;
-  --border: rgba(225, 238, 255, 0.78);
+  --border: rgba(218, 233, 255, 0.72);
+  --bg-1: #081128;
+  --bg-2: #142d67;
+  --bg-3: #1c55d7;
 }
 
 * {
   box-sizing: border-box;
 }
 
+html,
 body {
   margin: 0;
-  min-height: 100vh;
+  min-height: 100%;
+}
+
+body {
   font-family: "Outfit", system-ui, sans-serif;
   color: var(--fg);
-  background: radial-gradient(70% 50% at 50% 82%, #215de0 0, #163170 42%, #080f24 85%);
+  background: radial-gradient(68% 48% at 50% 82%, var(--bg-3) 0, var(--bg-2) 42%, var(--bg-1) 86%);
   overflow-x: hidden;
 }
 
 .page {
   position: relative;
   min-height: 100vh;
-  max-width: 1600px;
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 3.2rem 4rem 2.6rem;
+  padding: 2.1rem 1.4rem 1.2rem;
   isolation: isolate;
 }
 
@@ -35,70 +42,58 @@ body {
 .texture {
   z-index: -3;
   background:
-    radial-gradient(2px 2px at 7% 12%, rgba(255, 255, 255, 0.25), transparent),
-    radial-gradient(2px 2px at 31% 20%, rgba(255, 255, 255, 0.18), transparent),
-    radial-gradient(2px 2px at 60% 80%, rgba(255, 255, 255, 0.16), transparent),
-    radial-gradient(2px 2px at 91% 26%, rgba(255, 255, 255, 0.24), transparent),
-    radial-gradient(1.6px 1.6px at 77% 50%, rgba(255, 255, 255, 0.13), transparent);
-  background-size: 220px 220px;
-  opacity: 0.75;
+    radial-gradient(1.6px 1.6px at 7% 12%, rgba(255, 255, 255, 0.22), transparent),
+    radial-gradient(1.8px 1.8px at 31% 20%, rgba(255, 255, 255, 0.16), transparent),
+    radial-gradient(1.8px 1.8px at 60% 80%, rgba(255, 255, 255, 0.15), transparent),
+    radial-gradient(2px 2px at 91% 26%, rgba(255, 255, 255, 0.2), transparent);
+  background-size: 180px 180px;
+  opacity: 0.7;
 }
 
 .dust {
   z-index: -2;
   mix-blend-mode: screen;
-  opacity: 0.42;
+  opacity: 0.33;
 }
 
 .dust-a {
-  background: repeating-radial-gradient(circle at 25% 10%, transparent 0 60px, rgba(255, 255, 255, 0.07) 60px 61px);
-  animation: drift 18s linear infinite;
+  background: repeating-radial-gradient(circle at 20% 8%, transparent 0 48px, rgba(255, 255, 255, 0.06) 48px 49px);
+  animation: drift 20s linear infinite;
 }
 
 .dust-b {
-  background: repeating-radial-gradient(circle at 75% 70%, transparent 0 56px, rgba(255, 255, 255, 0.05) 56px 57px);
-  animation: drift 24s linear infinite reverse;
+  background: repeating-radial-gradient(circle at 80% 70%, transparent 0 44px, rgba(255, 255, 255, 0.05) 44px 45px);
+  animation: drift 26s linear infinite reverse;
 }
 
 @keyframes drift {
-  from {
-    transform: translateY(0);
-  }
-  to {
-    transform: translateY(-26px);
-  }
+  from { transform: translateY(0); }
+  to { transform: translateY(-20px); }
 }
 
 .masthead {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 2rem;
+  gap: 1.4rem;
 }
 
 .mark-wrap {
-  width: 350px;
+  width: clamp(150px, 19vw, 250px);
   opacity: 0.28;
-  margin-left: 0.6rem;
-  animation: breathe 5s ease-in-out infinite;
+  margin-left: 0.25rem;
+  animation: breathe 5.5s ease-in-out infinite;
 }
 
 @keyframes breathe {
-  0%,
-  100% {
-    transform: scale(1);
-    opacity: 0.24;
-  }
-  50% {
-    transform: scale(1.013);
-    opacity: 0.33;
-  }
+  0%, 100% { transform: scale(1); opacity: 0.22; }
+  50% { transform: scale(1.016); opacity: 0.32; }
 }
 
 .brand-mark {
   width: 100%;
   fill: none;
-  stroke: rgba(240, 248, 255, 0.95);
+  stroke: rgba(239, 248, 255, 0.95);
   stroke-width: 2.2;
   stroke-linecap: round;
   stroke-linejoin: round;
@@ -106,197 +101,210 @@ body {
 
 .intro {
   text-align: right;
-  margin-top: 2.1rem;
+  margin-top: 0.7rem;
 }
 
 .intro p,
 .intro h1 {
   margin: 0;
-  font-size: clamp(1.7rem, 2.15vw, 3.1rem);
-  line-height: 1.2;
+  line-height: 1.18;
+  font-size: clamp(1rem, 2vw, 2.1rem);
 }
 
-.intro h1 {
-  font-weight: 800;
-}
+.intro h1 { font-weight: 800; }
 
 .contact {
-  margin-top: 1.45rem;
+  margin-top: 0.9rem;
   display: inline-flex;
   align-items: center;
-  gap: 0.7rem;
+  gap: 0.54rem;
   text-decoration: none;
   color: #fff;
-  background: rgba(17, 20, 31, 0.88);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(18, 24, 35, 0.84);
+  border: 1px solid rgba(255, 255, 255, 0.26);
   border-radius: 999px;
-  padding: 0.7rem 1.4rem;
-  font-size: clamp(1.2rem, 1.65vw, 2rem);
-  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.22), 0 10px 22px rgba(7, 10, 16, 0.38);
-  backdrop-filter: blur(8px) saturate(130%);
+  padding: 0.44rem 0.95rem;
+  font-size: clamp(0.92rem, 1.5vw, 1.6rem);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.2), 0 8px 18px rgba(6, 10, 22, 0.38);
+  backdrop-filter: blur(10px) saturate(130%);
 }
 
 .mail {
-  width: 1.28em;
-  height: 1.28em;
+  width: 1.22em;
+  height: 1.22em;
   border-radius: 999px;
   background: #fff;
   color: #111827;
   display: grid;
   place-items: center;
-  font-size: 0.86em;
+  font-size: 0.84em;
 }
 
 .deck {
-  margin-top: 2rem;
+  margin-top: 1.3rem;
   display: flex;
-  gap: 1.65rem;
+  gap: 0.9rem;
   overflow-x: auto;
-  padding: 0.4rem 0.35rem 0.8rem;
+  padding: 0.2rem 0.2rem 0.6rem;
   scrollbar-width: none;
+  scroll-snap-type: x mandatory;
 }
 
-.deck::-webkit-scrollbar {
-  display: none;
-}
+.deck::-webkit-scrollbar { display: none; }
 
 .glass-card {
   position: relative;
-  flex: 0 0 324px;
-  height: 470px;
-  border: 4px solid var(--border);
-  border-radius: 34px;
-  padding: 2.45rem 1.5rem;
+  flex: 0 0 clamp(210px, 22vw, 245px);
+  height: clamp(300px, 34vw, 355px);
+  border: 3px solid var(--border);
+  border-radius: 24px;
+  padding: 1.25rem 1rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.42), inset 0 -10px 20px rgba(0, 0, 0, 0.2), 0 18px 30px rgba(2, 8, 25, 0.38);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.38), inset 0 -8px 18px rgba(0, 0, 0, 0.22), 0 12px 22px rgba(3, 10, 28, 0.4);
   backdrop-filter: blur(14px) saturate(130%);
   overflow: hidden;
+  scroll-snap-align: start;
 }
 
 .glass-card::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(140deg, rgba(255, 255, 255, 0.17), transparent 32%, transparent 68%, rgba(255, 255, 255, 0.08));
+  background: linear-gradient(142deg, rgba(255, 255, 255, 0.18), transparent 33%, transparent 70%, rgba(255, 255, 255, 0.08));
   pointer-events: none;
 }
 
 .glass-card::after {
   content: "";
   position: absolute;
-  inset: -80% -40%;
-  background: linear-gradient(115deg, transparent 44%, rgba(255, 255, 255, 0.2) 50%, transparent 56%);
-  transform: translateX(-45%) rotate(8deg);
-  animation: sheen 8s ease-in-out infinite;
+  inset: -78% -36%;
+  background: linear-gradient(114deg, transparent 44%, rgba(255, 255, 255, 0.2) 50%, transparent 56%);
+  transform: translateX(-42%) rotate(8deg);
+  animation: sheen 8.5s ease-in-out infinite;
   pointer-events: none;
 }
 
 @keyframes sheen {
-  0%,
-  100% {
-    transform: translateX(-45%) rotate(8deg);
-    opacity: 0;
-  }
-  28% {
-    opacity: 0;
-  }
-  48% {
-    transform: translateX(44%) rotate(8deg);
-    opacity: 0.46;
-  }
-  62% {
-    opacity: 0;
-  }
+  0%, 100% { transform: translateX(-42%) rotate(8deg); opacity: 0; }
+  30% { opacity: 0; }
+  50% { transform: translateX(40%) rotate(8deg); opacity: 0.4; }
+  65% { opacity: 0; }
 }
 
 .venture h2 {
   margin: 0;
-  font-size: 4.82rem;
+  font-size: clamp(2.65rem, 4.15vw, 4.3rem);
   letter-spacing: -1px;
   line-height: 0.9;
   font-weight: 700;
   text-transform: lowercase;
-  text-shadow: 0 3px 16px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.28);
 }
 
 .go {
   margin-left: auto;
-  width: 79px;
-  height: 79px;
-  border: 4px solid rgba(211, 228, 251, 0.6);
+  width: clamp(54px, 5.2vw, 72px);
+  height: clamp(54px, 5.2vw, 72px);
+  border: 3px solid rgba(211, 228, 251, 0.58);
   border-radius: 999px;
-  background: rgba(122, 154, 199, 0.2);
+  background: rgba(124, 156, 200, 0.2);
   color: #edf4ff;
   display: grid;
   place-items: center;
-  font-size: 4rem;
+  font-size: clamp(2.2rem, 3vw, 3.5rem);
   line-height: 0;
   cursor: pointer;
   backdrop-filter: blur(8px);
 }
 
 .v1 {
-  background: radial-gradient(circle at 36% 76%, #555 0, #2c2c2c 34%, #070707 100%);
+  background: radial-gradient(circle at 36% 76%, #575757 0, #2c2c2c 35%, #090909 100%);
 }
 
 .v2 {
   background:
-    linear-gradient(170deg, #5c7385 0, #3f5568 49%, #4c6274 100%),
+    linear-gradient(170deg, #5c7385 0, #3f5568 49%, #4b6274 100%),
     radial-gradient(120% 90% at 50% 100%, rgba(255, 255, 255, 0.28) 0, transparent 58%);
 }
 
-.v3 {
-  background: linear-gradient(145deg, #030406 0, #0f1626 47%, #04060e 100%);
-}
+.v3 { background: linear-gradient(145deg, #030406 0, #0f1626 47%, #04060e 100%); }
 
 .v3::before {
   background:
-    linear-gradient(140deg, rgba(255, 255, 255, 0.15), transparent 32%, transparent 68%, rgba(255, 255, 255, 0.06)),
+    linear-gradient(142deg, rgba(255, 255, 255, 0.15), transparent 33%, transparent 70%, rgba(255, 255, 255, 0.07)),
     linear-gradient(118deg, transparent 14%, rgba(255, 95, 12, 0.9) 19%, transparent 24%);
 }
 
-.v4 {
-  background: linear-gradient(164deg, #0e6fd9 0, #03306e 57%, #000f29 100%);
-}
+.v4 { background: linear-gradient(164deg, #0e6fd9 0, #03306e 57%, #000f29 100%); }
 
 .v4::before,
 .v5::before {
   background:
-    linear-gradient(140deg, rgba(255, 255, 255, 0.15), transparent 32%, transparent 68%, rgba(255, 255, 255, 0.08)),
+    linear-gradient(142deg, rgba(255, 255, 255, 0.15), transparent 33%, transparent 70%, rgba(255, 255, 255, 0.08)),
     repeating-linear-gradient(126deg, rgba(255, 255, 255, 0.2) 0 3px, transparent 3px 14px);
 }
 
-.v5 {
-  background: linear-gradient(165deg, #fc4d7c 0, #e467a7 43%, #f4b34f 100%);
-}
+.v5 { background: linear-gradient(165deg, #fc4d7c 0, #e467a7 43%, #f4b34f 100%); }
 
-@media (max-width: 980px) {
+@media (max-width: 760px) {
   .page {
-    padding: 2rem 0.9rem 1.2rem;
+    padding: 1.1rem 0.72rem 0.8rem;
   }
 
   .masthead {
-    flex-direction: column;
-  }
-
-  .intro {
-    text-align: left;
-    margin-top: 0;
+    gap: 0.65rem;
+    align-items: center;
   }
 
   .mark-wrap {
-    width: 240px;
+    width: 110px;
     margin-left: 0;
   }
 
+  .intro {
+    flex: 1;
+    text-align: right;
+    margin-top: 0;
+  }
+
+  .intro p,
+  .intro h1 {
+    font-size: clamp(0.8rem, 3.4vw, 1.06rem);
+    line-height: 1.22;
+  }
+
+  .contact {
+    margin-top: 0.55rem;
+    padding: 0.35rem 0.74rem;
+    font-size: 0.86rem;
+  }
+
+  .deck {
+    margin-top: 0.9rem;
+    gap: 0.62rem;
+    padding-bottom: 0.35rem;
+  }
+
   .glass-card {
-    flex-basis: 278px;
-    height: 400px;
+    flex-basis: 47.5vw;
+    max-width: 205px;
+    min-width: 168px;
+    height: 248px;
+    border-radius: 19px;
+    padding: 0.85rem 0.78rem;
+    border-width: 2.5px;
   }
 
   .venture h2 {
-    font-size: 4.1rem;
+    font-size: clamp(2rem, 9vw, 2.65rem);
+  }
+
+  .go {
+    width: 46px;
+    height: 46px;
+    font-size: 2.2rem;
+    border-width: 2.5px;
   }
 }
